@@ -14,4 +14,6 @@ export const Search = styled.View``;
 
 export const ProductList = styled.FlatList`
 
-`;
+`
+
+export const ButtonArea = styled.TouchableOpacity``;

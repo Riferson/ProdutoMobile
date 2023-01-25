@@ -38,6 +38,7 @@ export const ProductDescription = styled.Text`
 export const ButtonContent = styled.View`
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: ${RFValue(50)}px;
 `;
 
 export const Edit = styled.TouchableOpacity`
@@ -70,7 +71,7 @@ export const DescriptionArea = styled.ScrollView.attrs({
     },
     showsVerticalScrollIndicator:false,
 })`
-    height:${RFValue(300)}px;
+    height:${RFValue(250)}px;
 `; 
 
 export const ModalArea = styled.View`

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-native";
+import { Footer } from "../../components/Footer";
 import { ModalContent } from "../../components/ModalContent";
 import noImage from '../../images/no-image.png';
 
@@ -31,6 +32,7 @@ export function DescriptionProduct(){
                 <Edit><Label>Editar</Label></Edit>
                 <Remove onPress={handleModalOpen}><Label>Remover</Label></Remove>
             </ButtonContent>
+            <Footer/>
             <ModalArea>
                 <Modal visible={modalVisible}  transparent={true}>
                     <ModalContent modalClose={handleModalClose} id={id}/>
