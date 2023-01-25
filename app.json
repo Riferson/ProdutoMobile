@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "produtomobile",
+    "slug": "produtomobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
