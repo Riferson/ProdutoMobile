@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { api } from "../../services/api";
+import  api  from "../../services/api";
 import {Container,Title,SubTitle,Comfirm,Cancel,Label,ButtonArea} from './styles';
 
 interface props{
