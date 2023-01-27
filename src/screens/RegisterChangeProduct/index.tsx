@@ -39,9 +39,13 @@ export function RegisterChangeProduct({route}){
         try {
             console.log(route);
             if(route.params != undefined){
-                const response = await api.delete(`/produto/${route.params.paramKey}`);
+                console.log('entrou no put');
+                data.idProduto = route.params.paramKey;
+                const response = await api.put(`/produto/${data.idProduto}`, data);
+            }else{
+
+                await api.post('/produto/',data);
             }
-            await api.post('/produto/',data);
             console.log('post');
     
           } catch (error) {
@@ -63,7 +67,6 @@ export function RegisterChangeProduct({route}){
                     SetDescription(product?.descricao);
                     SetImage(product?.imagem);
                     setIsLoading(true);
-                    console.log('loading?',isloading)
                 } catch (error) {
                     console.log(error)
                 }
@@ -96,7 +99,7 @@ export function RegisterChangeProduct({route}){
                              maxWidth: 200,
                              
                             } );
-                            console.log(result);
+
                        }
                         }><Label>Selecionar Imagem</Label></UpImage>
                 </ProductForm>
