@@ -3,41 +3,63 @@ import { ProductCard } from "../../components/ProductCard";
 import {Container,Title,Search,ProductList,ButtonArea} from './styles';
 import noImage from '../../images/no-image.png';
 import { ProductsDTO } from "../../dtos/ProductsDTO";
-import { api } from "../../services/api";
-import { useNavigation } from "@react-navigation/native";
+import  api from "../../services/api";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Footer } from "../../components/Footer";
+import { launchImageLibrary } from "react-native-image-picker";
 
 export function Produtos(){
 
     const [listProducts,setListProducts] = useState<ProductsDTO[]>([]);
-    const [loading,setLoading] = useState<Boolean>(true);
-    const navigation = useNavigation<any>();
+    const [listagem,setListagem] = useState<ProductsDTO[]>([]);
+    const [product,setProduct] = useState<ProductsDTO[]>([]);
 
-    function handleDescriptionProduct(){
-        console.log('teste');
-        navigation.navigate('Descricao');
-    }
+    const [search, setSearch] = useState(''); 
+    const navigation = useNavigation<any>();
     
-    useEffect(()=>{
-        async function fetchProducts(){
-            try {
-                const response = await api.get('/Produto');
-                setListProducts(response.data);
-            } catch (error) {
-                console.log(error)
-            }finally{
-                setLoading(false);
-            }
+    async function fetchProducts(){
+
+        try {
+            console.log("api",api);
+            const response = await api.get('/produto');
+            setListagem(response.data);
+            setListProducts(response.data);
+        } catch (error) {
+            console.log(error)
         }
-        fetchProducts();
-    },[]);
+    }
+
+    useEffect(()=>{
+        if(search === ''){
+            setListagem(listProducts);
+        }else{
+            setListagem(
+                listProducts.filter((item)=>{
+                    if(item.nome.indexOf(search)>-1){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                })
+            );
+        }
+    },[search])
+
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchProducts()
+        }, [])
+      );
+
+     
     
     return(
         <Container>
             <Title>Produtos</Title>
-            <Search></Search>
-            <ProductList data={listProducts}
-                renderItem={({item})=><ProductCard data={item} onPress={handleDescriptionProduct}/>} showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:16}}
+            <Search placeholder="Pesquise Aqui" value={search} onChangeText={setSearch}></Search>
+
+            <ProductList data={listagem}
+                renderItem={({item})=><ProductCard data={item} />} showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:16}}
             />
             <Footer/>
         </Container>

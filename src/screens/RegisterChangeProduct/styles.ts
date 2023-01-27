@@ -43,3 +43,5 @@ export const LabelButton = styled.Text`
     font-size: ${RFValue(32)}px;
     color: white;
 `;
+
+export const UpImage = styled.TouchableOpacity``;

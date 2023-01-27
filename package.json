@@ -6,8 +6,7 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web",
-    "api": "json-server ./src/services/server.json --host 172.18.0.110 --port 3366 --id idProduto"
+    "web": "expo start --web"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.3",
@@ -17,15 +16,18 @@
     "@types/styled-components-react-native": "^5.2.1",
     "axios": "^1.2.4",
     "expo": "~47.0.12",
+    "expo-image-picker": "~14.0.2",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
-    "json-server": "^0.17.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
+    "react-native-uuid": "^2.0.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
